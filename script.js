@@ -116,7 +116,7 @@
     theme: "night",
     choices: [
       { text: "Snu og løp", next: "ending-undead" },
-      { text: "Kikk nærmere", next: "ending-bloodyHand" }
+      { text: "Murd han", next: "ending-bloodyHand" }
     ]
   },
   "ending-partners": {
@@ -211,10 +211,10 @@
   },
   "ending-bloodyHand": {
     title: "Slutt 11: Blodig hånd",
-    description: "Du bøyer deg ned for å se nærmere. Noe annet rekker deg først, og historien slutter der.",
-    caption: "Hallpass avslått. Permanent.",
+    description: "Du bøyer deg ned for å se nærmere. OG PLUKER AV DØR HÅNDTAKET OG MURDER HAN EKSTREMT.",
+    caption: "Din morder....",
     image: "Images/IMAGES TO USE!/creepy-bloody-hand-reaching-out-in-the-dark-for-horror-theme-photo.jpg",
-    alt: "En blodig hånd strekker seg ut i mørket.",
+    alt: "Du har nå Arlys blod på dinne hender..",
     theme: "danger",
     ending: true
   }
