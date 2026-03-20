@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velkommen til Arly's Basic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Bebas+Neue&family=Changa+One:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="calm">
+  <div class="site-shell">
+    <nav class="top-nav" aria-label="Informasjon">
+      <div class="top-nav__track">
+        <a class="top-nav__button" href="rules.html">Regler</a>
+        <a class="top-nav__button" href="modes.html">Moduser</a>
+        <a class="top-nav__button" href="storyline.html">Historie</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="hero__eyebrow">Interaktivt historiespill</p>
+      <h1 class="hero__title">Velkommen til Arly's <span>Basic</span></h1>
+    </header>
+
+    <aside class="ending-menu" aria-label="Oversikt over slutter">
+      <p class="ending-menu__label">Slutter</p>
+      <p class="ending-menu__count"><span id="endingCount">0</span> / <span id="endingTotal">0</span></p>
+      <p class="ending-menu__text">Funnet i denne runden</p>
+    </aside>
+
+    <main class="story-app">
+      <div class="story-main">
+        <section class="story-card">
+          <div class="story-card__copy">
+            <h2 id="sceneTitle">Arly sin klasse</h2>
+            <p id="sceneDescription">Velg ditt neste trekk.</p>
+          </div>
+
+          <figure class="story-card__frame">
+            <img id="sceneImage" src="Images/Picture 1.png" alt="Arly i klasserommet" />
+            <figcaption class="story-card__caption" id="sceneCaption">Velg ett av to trekk for å komme videre.</figcaption>
+          </figure>
+        </section>
+
+        <section class="choice-strip" id="choiceStrip" aria-label="Valg">
+          <button class="choice-button" id="choiceA" type="button"></button>
+          <div class="choice-divider" aria-hidden="true">Eller</div>
+          <button class="choice-button" id="choiceB" type="button"></button>
+        </section>
+
+        <section class="ending-panel" id="endingPanel" hidden>
+          <h3 class="ending-panel__title" id="endingTitle"></h3>
+          <p class="ending-panel__text" id="endingText"></p>
+          <button class="restart-button" id="restartBtn" type="button">Start på nytt</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

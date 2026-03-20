@@ -1,0 +1,363 @@
+const moodLabels = {
+  calm: "Calm",
+  hope: "Hopeful",
+  caution: "Suspicious",
+  danger: "Furious",
+  dead: "Void"
+};
+
+const moodClasses = Object.keys(moodLabels).map((mood) => `mood-${mood}`);
+
+const scenes = {
+  start: {
+    title: "Mandatory MAMP Monday",
+    description:
+      "Arly slams a stack of MAMP SQL chores on your Laptop. The door is locked, the windows are closed shut, and his eyes never blink.",
+    mood: "calm",
+    image: "images/Picture 1.png",
+    choices: [
+      {
+        text: "Fortell han at han må holde kjeft",
+        next: "labPlan"
+      },
+      {
+        text: "Spør om å gå på toalettet",
+        next: "toiletAttempt"
+      }
+    ]
+  },
+  labPlan: {
+    title: "Cable Cart Opportunity",
+    description:
+      "Arly lets you plug in the projector. His clipboard lists every student's heartbeat. If you slip, he'll know.",
+    mood: "caution",
+    image: "images/desk-setup-16x9.jpg",
+    choices: [
+      {
+        text: "Sabotage the MAMP build and hope chaos follows",
+        next: "glitchPlan"
+      },
+      {
+        text: "Use his admin session to open the district chat",
+        next: "callForHelp"
+      }
+    ]
+  },
+  glitchPlan: {
+    title: "Compile Storm",
+    description:
+      "You stack malicious plugins inside his beloved project. The fans scream. Arly tilts his head, delighted and furious.",
+    mood: "danger",
+    image: "images/glitch-lab-16x9.jpg",
+    choices: [
+      {
+        text: "Push the code past safety and unleash whatever happens",
+        next: "ending-monster"
+      },
+      {
+        text: "Kneel, promise loyalty to MAMP, and feed his ego",
+        next: "ending-disciple"
+      }
+    ]
+  },
+  callForHelp: {
+    title: "Admin Backchannel",
+    description:
+      "The open chat cursor blinks. Arly checks the hallway camera, buying you ten seconds.",
+    mood: "caution",
+    image: "images/chat-16x9.jpg",
+    choices: [
+      {
+        text: "Send a coded SOS to the counselor",
+        next: "ending-whistleblower"
+      },
+      {
+        text: "Invite Arly to a private debugging session",
+        next: "romanceSetup"
+      }
+    ]
+  },
+  romanceSetup: {
+    title: "Private Debugging",
+    description:
+      "He dims the lights and waxes poetic about the purity of localhost. You can weaponize this obsession or drown in it.",
+    mood: "caution",
+    image: "images/office-16x9.jpg",
+    choices: [
+      {
+        text: "Pretend you're touched and accept his forever partnership",
+        next: "ending-married"
+      },
+      {
+        text: "Let him drone until the bells glitch and the day repeats",
+        next: "ending-loop"
+      }
+    ]
+  },
+  toiletAttempt: {
+    title: "Hall Pass Hunt",
+    description:
+      "He escorts you to the door and folds his arms. The hallway is empty but security cameras pan lazily.",
+    mood: "caution",
+    image: "images/Option 2 picture 1.png",
+    choices: [
+      {
+        text: "Slip through the window toward the fire escape",
+        next: "DontWorry"
+      },
+      {
+        text: "Duck into the storage closet before he counts to three",
+        next: "BlubBlub"
+      }
+    ]
+  },
+  BlubBlub: {
+    title: "Hallll Pass Hunt",
+    description:
+      "He escorts you to the door and folds his arms. The hallway is empty but security cameras pan lazily.",
+    mood: "caution",
+    image: "images/Option 2 picture 1.png",
+    choices: [
+      {
+        text: "Slip through the window toward the fire escape",
+        next: "DontWorry"
+      },
+      {
+        text: "Duck into the storage closet before he counts to three",
+        next: "storageRoom"
+      }
+    ]
+  },
+  DontWorry: {
+    title: "Ledge Balance",
+    description:
+      "Cold wind hits your face. Arly's footsteps drum behind you while you cling to chipped paint.",
+    mood: "danger",
+    image: "images/window-16x9.jpg",
+    choices: [
+      {
+        text: "Shuffle toward the fire escape and bolt",
+        next: "ending-escape"
+      },
+      {
+        text: "Flag the maintenance crew for help",
+        next: "ending-expelled"
+      }
+    ]
+  },
+  storageRoom: {
+    title: "Dust And Tools",
+    description:
+      "Shelves of props, a busted PA system, and a trapdoor with fresh fingerprints wait in the dark.",
+    mood: "danger",
+    image: "images/storage-16x9.jpg",
+    choices: [
+      {
+        text: "Arm yourself with a wrench and brace for him",
+        next: "faceOff"
+      },
+      {
+        text: "Lift the trapdoor and slip into the crawlspace",
+        next: "ending-basement"
+      }
+    ]
+  },
+  faceOff: {
+    title: "Final Lab Fight",
+    description:
+      "Arly blocks the only exit, scalpel-sharp smile waiting. The fluorescent hum counts down your heartbeat.",
+    mood: "danger",
+    image: "images/showdown-16x9.jpg",
+    choices: [
+      {
+        text: "Charge straight at him",
+        next: "ending-dead"
+      },
+      {
+        text: "Aim for his treasured headset and swing",
+        next: "ending-killArly"
+      }
+    ]
+  },
+  "ending-married": {
+    title: "Ending 01 · Vows Under Fluorescents",
+    description:
+      "You nod, he produces ring pops, and the class applauds in terror. You're married to Arly, doomed to MAMP anniversaries forever.",
+    mood: "caution",
+    image: "images/ending-married-16x9.jpg",
+    endingName: "Married To Arly",
+    endingNumber: 1,
+    isEnding: true
+  },
+  "ending-monster": {
+    title: "Ending 02 · Compiler Spawn",
+    description:
+      "The overclocked build liquefies reality. Arly mutates into a wire-toothed monster guarding the lab. Nobody escapes now.",
+    mood: "danger",
+    image: "images/ending-monster-16x9.jpg",
+    endingName: "Arly The Monster",
+    endingNumber: 2,
+    isEnding: true
+  },
+  "ending-escape": {
+    title: "Ending 03 · Freedom Bell",
+    description:
+      "You blast down the fire escape, past the dumpsters, and sprint into daylight before the final bell.",
+    mood: "hope",
+    image: "images/ending-escape-16x9.jpg",
+    endingName: "You Escaped",
+    endingNumber: 3,
+    isEnding: true
+  },
+  "ending-killArly": {
+    title: "Ending 04 · Self-Defense",
+    description:
+      "The headset cracks, he drops, and the lab falls silent. The rumor mill will never believe it.",
+    mood: "hope",
+    image: "images/ending-kill-16x9.jpg",
+    endingName: "You Killed Arly",
+    endingNumber: 4,
+    isEnding: true
+  },
+  "ending-dead": {
+    title: "Ending 05 · Final Bell",
+    description:
+      "Charging head-on gives him the only opening he needed. Last thing you hear is the projector warming back up.",
+    mood: "dead",
+    image: "images/ending-dead-16x9.jpg",
+    endingName: "He Kills You",
+    endingNumber: 5,
+    isEnding: true
+  },
+  "ending-basement": {
+    title: "Ending 06 · Basement Semester",
+    description:
+      "The trapdoor locks behind you. Chains, monitors, and an eternal syllabus mean graduation never arrives.",
+    mood: "danger",
+    image: "images/ending-basement-16x9.jpg",
+    endingName: "Locked In The Basement",
+    endingNumber: 6,
+    isEnding: true
+  },
+  "ending-whistleblower": {
+    title: "Ending 07 · Whistleblower",
+    description:
+      "Counselors flood the room, confiscate every MAMP USB, and Arly is escorted out in cuffs. You testify at the board meeting.",
+    mood: "hope",
+    image: "images/ending-whistleblower-16x9.jpg",
+    endingName: "Authorities Step In",
+    endingNumber: 7,
+    isEnding: true
+  },
+  "ending-disciple": {
+    title: "Ending 08 · MAMP Disciple",
+    description:
+      "You swear loyalty. Arly smiles, brands you with a lanyard, and you spend eternity optimizing localhost configs.",
+    mood: "caution",
+    image: "images/ending-disciple-16x9.jpg",
+    endingName: "MAMP Disciple",
+    endingNumber: 8,
+    isEnding: true
+  },
+  "ending-expelled": {
+    title: "Ending 09 · Transfer Denied",
+    description:
+      "Maintenance escorts you to the principal. You're expelled, yet Arly waves from the parking lot promising he'll visit.",
+    mood: "caution",
+    image: "images/ending-expelled-16x9.jpg",
+    endingName: "Expelled And Stalked",
+    endingNumber: 9,
+    isEnding: true
+  },
+  "ending-loop": {
+    title: "Ending 10 · Eternal Detention",
+    description:
+      "Arly loops the bell schedule through MAMP cron jobs. Every time you blink, class restarts. Forever homework.",
+    mood: "danger",
+    image: "images/ending-loop-16x9.jpg",
+    endingName: "Time Loop Detention",
+    endingNumber: 10,
+    isEnding: true
+  }
+};
+
+const body = document.body;
+const titleEl = document.getElementById("sceneTitle");
+const descriptionEl = document.getElementById("sceneDescription");
+const choiceRow = document.getElementById("choiceRow");
+const choiceDivider = document.getElementById("choiceDivider");
+const choiceButtons = document.querySelectorAll(".choice");
+const moodLabel = document.getElementById("moodLabel");
+const sceneImage = document.getElementById("sceneImage");
+const endingPanel = document.getElementById("endingPanel");
+const endingBadge = document.getElementById("endingBadge");
+const endingHint = document.getElementById("endingHint");
+const restartBtn = document.getElementById("restartBtn");
+
+let currentSceneId = "start";
+
+function applyMood(mood = "calm") {
+  moodClasses.forEach((cls) => body.classList.remove(cls));
+  body.classList.add(`mood-${mood}`);
+  moodLabel.textContent = moodLabels[mood] ?? "Unknown";
+}
+
+function renderScene(sceneId) {
+  const scene = scenes[sceneId];
+  if (!scene) {
+    console.warn(`Scene ${sceneId} is missing.`);
+    return;
+  }
+
+  currentSceneId = sceneId;
+  titleEl.textContent = scene.title;
+  descriptionEl.textContent = scene.description;
+  sceneImage.src = scene.image;
+  sceneImage.alt = scene.title;
+  applyMood(scene.mood);
+
+  if (scene.isEnding) {
+    choiceRow.hidden = true;
+    endingBadge.hidden = false;
+    endingBadge.textContent = `${scene.endingName} · Ending ${scene.endingNumber}/10`;
+    endingHint.hidden = false;
+    endingHint.textContent = "No more moves. Hit \"Return to Homeroom\" to restart.";
+    endingPanel.hidden = false;
+    restartBtn.hidden = false;
+  } else {
+    endingPanel.hidden = true;
+    endingBadge.hidden = true;
+    endingHint.hidden = true;
+    restartBtn.hidden = true;
+    choiceRow.hidden = false;
+
+    const availableChoices = scene.choices?.filter(Boolean) ?? [];
+    choiceDivider.style.visibility = availableChoices.length === 2 ? "visible" : "hidden";
+
+    choiceButtons.forEach((button, index) => {
+      const choice = scene.choices?.[index];
+      if (choice) {
+        button.hidden = false;
+        button.disabled = false;
+        button.textContent = choice.text;
+      } else {
+        button.hidden = true;
+      }
+    });
+  }
+}
+
+choiceButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const scene = scenes[currentSceneId];
+    const next = scene?.choices?.[index]?.next;
+    if (!next) return;
+    renderScene(next);
+  });
+});
+
+restartBtn.addEventListener("click", () => {
+  renderScene("start");
+});
+
+renderScene("start");
